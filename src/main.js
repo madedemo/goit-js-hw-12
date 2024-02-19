@@ -18,7 +18,8 @@ form.addEventListener('submit', async e => {
   e.preventDefault();
   loader.style.display = 'block';
   searchTerm = e.target.elements.input.value;
-  currentPage = 1; // reset page number on new search
+  currentPage = 1;
+  gallery.innerHTML = '';
   await getPhotos(searchTerm, currentPage);
   e.target.reset();
 });
@@ -38,7 +39,7 @@ async function getPhotos(searchTerm, page) {
         image_type: 'photo',
         orientation: 'horizontal',
         safesearch: true,
-        per_page: 15, // 15 images per page
+        per_page: 40,
         page: page,
       },
     });
